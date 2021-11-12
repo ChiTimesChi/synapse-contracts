@@ -1,0 +1,5 @@
+{
+    "address": "0x0AF91FA049A7e1894F480bFE5bBa20142C6c29a9",
+    "comments": "This is an EOA until prod",
+    "abi": [{"inputs":[{"internalType":"address","name":"_singleton","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"stateMutability":"payable","type":"fallback"}]
+  }

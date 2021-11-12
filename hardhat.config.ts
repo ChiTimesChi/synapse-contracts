@@ -65,6 +65,10 @@ let config: HardhatUserConfig = {
       gas: 10000000,
       gasPrice: 20 * 1000000000
     },
+    optimism_kovan: {
+      url: "https://kovan.optimism.io",
+      gasPrice: 10000
+    },
     mainnet: {
       url: process.env.ALCHEMY_API,
     },
@@ -154,5 +158,23 @@ if (process.env.PRIVATE_KEYS) {
     }
   })
 }
+
+if (process.env.TESTNET_PRIVATE_KEYS) {
+  let TESTNET_NETWORKS = [
+    "optimism_kovan"
+  ]
+  Object.keys(config.networks).forEach((network) => {
+    if (TESTNET_NETWORKS.includes(network)) {
+      config.networks = {
+        ...config.networks,
+        [network]: {
+          ...config.networks?.[network],
+          accounts: JSON.parse(process.env.PRIVATE_KEYS),
+        },
+      }
+    }
+  })
+}
+
 
 module.exports = config
