@@ -11,5 +11,5 @@ interface IRouter {
         address[] calldata adapters,
         address _to,
         uint256 _fee
-  ) external;
+  ) external returns (uint256);
 }
